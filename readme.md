@@ -63,7 +63,7 @@ You can then apply additional styles to your element. Take the opportunity to in
 
 ```
 
-If you later wish to cancel the full screen view, you can do so by calling the fullScreen method again.
+If you later wish *to cancel the full screen view*, you can do so by calling the `fullScreen()` method again.
 
 ## Demo
 
