@@ -67,4 +67,4 @@ Take the opportunity to increase the font size, hide distractions and make for a
 
 ## Demo
 
-Go to [Tutorialzine](http://tutorialzine.com/2011/12/countdown-jquery/) for a live demo.
+Go to [Tutorialzine](http://tutorialzine.com/2012/02/enhance-your-website-fullscreen-api/) for a live demo.
