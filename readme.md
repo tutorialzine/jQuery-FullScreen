@@ -1,6 +1,6 @@
 # jQuery FullScreen Plugin
 
-A jQuery 1.7 plugin that wraps around the *Full Screen API* and works around various browser differences. Works in FF 10, Chrome and Safari.
+A jQuery 1.7 plugin that wraps around the *Full Screen API* and works around various browser differences. Works in FF 10, Chrome and Safari. It is useful for presenting users with a easier to read version of your web pages, or zooming *<canvas>* and *<video>* elements.
 
 ## How to use
 
@@ -53,7 +53,7 @@ if($.support.fullscreen){
 }
 ```
 
-You can then apply additional styles to your element:
+You can then apply additional styles to your element. Take the opportunity to increase the font size, hide distractions and make for a better reading experience.
 
 ```css
 
@@ -63,7 +63,7 @@ You can then apply additional styles to your element:
 
 ```
 
-Take the opportunity to increase the font size, hide distractions and make for a better reading experience.
+If you later wish to cancel the full screen view, you can do so by calling the fullScreen method again.
 
 ## Demo
 
