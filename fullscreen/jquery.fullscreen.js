@@ -13,8 +13,8 @@
 	// These helper functions available only to our plugin scope.
 	function supportFullScreen(){
 		var doc = document.documentElement;
-		
-		return	('requestFullscreen' in doc) ||
+
+		return ('requestFullscreen' in doc) ||
 				('mozRequestFullScreen' in doc && document.mozFullScreenEnabled) ||
 				('webkitRequestFullScreen' in doc);
 	}
@@ -33,9 +33,9 @@
 		return document.fullscreen ||
 				document.mozFullScreen ||
 				document.webkitIsFullScreen ||
-				$.noop();
+				false;
 	}
-	
+
 	function cancelFullScreen(){
 		if (document.exitFullscreen) {
 			document.exitFullscreen();
@@ -56,26 +56,25 @@
 
 	// Adding a new test to the jQuery support object
 	$.support.fullscreen = supportFullScreen();
-	
+
 	// Creating the plugin
 	$.fn.fullScreen = function(props){
 		if(!$.support.fullscreen || this.length !== 1) {
-			
 			// The plugin can be called only
 			// on one element at a time
-			
+
 			return this;
 		}
-		
+
 		if(fullScreenStatus()){
 			// if we are already in fullscreen, exit
 			cancelFullScreen();
 			return this;
 		}
-		
+
 		// You can potentially pas two arguments a color
 		// for the background and a callback function
-		
+
 		var options = $.extend({
 			'background'      : '#111',
 			'callback'        : $.noop( ),
@@ -83,10 +82,10 @@
 		}, props),
 
 		elem = this,
-		
+
 		// This temporary div is the element that is
 		// actually going to be enlarged in full screen
-		
+
 		fs = $('<div>', {
 			'css' : {
 				'overflow-y' : 'auto',
@@ -101,12 +100,12 @@
 		// You can use the .fullScreen class to
 		// apply styling to your element
 		elem.addClass( options.fullscreenClass );
-		
+
 		// Inserting our element in the temporary
 		// div, after which we zoom it in fullscreen
 
 		requestFullScreen(fs.get(0));
-		
+
 		fs.click(function(e){
 			if(e.target == this){
 				// If the black bar was clicked
@@ -124,15 +123,15 @@
 				// We have exited full screen.
 				// Remove the class and destroy
 				// the temporary div
-				
+
 				elem.removeClass( options.fullscreenClass ).insertBefore(fs);
 				fs.remove();
 			}
-			
+
 			// Calling the user supplied callback
 			options.callback(fullScreen);
 		});
-		
+
 		return elem;
 	};
 
