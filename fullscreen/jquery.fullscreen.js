@@ -44,6 +44,7 @@
 		} else if (document.webkitCancelFullScreen) {
 			document.webkitCancelFullScreen();
 		}
+		$(document).off( 'fullscreenchange mozfullscreenchange webkitfullscreenchange' );
 	}
 
 	function onFullScreenEvent(callback){
