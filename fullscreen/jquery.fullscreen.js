@@ -129,8 +129,10 @@
 				fs.remove();
 			}
 
-			// Calling the user supplied callback
-			options.callback(fullScreen);
+			// Calling the facultative user supplied callback
+			if(options.callback) {
+                            options.callback(fullScreen);
+                        }
 		});
 
 		return elem;
