@@ -25,7 +25,7 @@
 		} else if (elem.mozRequestFullScreen) {
 			elem.mozRequestFullScreen();
 		} else if (elem.webkitRequestFullScreen) {
-			elem.webkitRequestFullScreen();
+			elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
 		}
 	}
 
