@@ -131,6 +131,7 @@
 			}
 
 			// Calling the user supplied callback
+			if(typeof options.callback === "function")
 			options.callback(fullScreen);
 		});
 
