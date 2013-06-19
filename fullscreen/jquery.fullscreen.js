@@ -44,7 +44,6 @@
 		} else if (document.webkitCancelFullScreen) {
 			document.webkitCancelFullScreen();
 		}
-		$(document).off( 'fullscreenchange mozfullscreenchange webkitfullscreenchange' );
 	}
 
 	function onFullScreenEvent(callback){
@@ -122,6 +121,8 @@
 		onFullScreenEvent(function(fullScreen){
 			if(!fullScreen){
 				// We have exited full screen.
+			        // Detach event listener
+			        $(document).off( 'fullscreenchange mozfullscreenchange webkitfullscreenchange' );
 				// Remove the class and destroy
 				// the temporary div
 
