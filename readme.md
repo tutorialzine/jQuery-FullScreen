@@ -22,9 +22,14 @@ Include jquery.fullscreen.js in your page along with version 1.7 of the jQuery l
         <td>a function</td>
         <td>The callback function will be called on a full screen change event. It has one argument - a boolean indicating whether we are in full screen or not.</td>
     </tr>
+    <tr>
+    	<td>fullscreenClass</td>
+    	<td>a string</td>
+    	<td>This is the CSS class that will be added to elements in fullscreen mode. The default class is `fullScreen`.</td>
+    </tr>
 </table>
 
-After the plugin makes your element full screen, it will add the `.fullScreen` class on it, so you can easily style it.
+After the plugin makes your element full screen, it will add the `fullScreen` class on it (unless overridden with the `fullscreenClass` parameter), so you can easily style it.
 
 ## Example
 
