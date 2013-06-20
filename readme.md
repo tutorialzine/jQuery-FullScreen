@@ -25,7 +25,7 @@ Include jquery.fullscreen.js in your page along with version 1.7 of the jQuery l
     <tr>
     	<td>fullscreenClass</td>
     	<td>a string</td>
-    	<td>This is the CSS class that will be added to elements in fullscreen mode. The default class is `fullScreen`.</td>
+    	<td>This is the CSS class that will be added to elements in fullscreen mode. The default class is "fullScreen".</td>
     </tr>
 </table>
 
