@@ -6,17 +6,17 @@
  * @license     MIT License
  */
 
+//
 /*jshint browser: true, jquery: true */
 (function($){
 	"use strict";
 
 	// These helper functions available only to our plugin scope.
 	function supportFullScreen(){
-		var doc = document.documentElement;
-
-		return ('requestFullscreen' in doc) ||
-				('mozRequestFullScreen' in doc && document.mozFullScreenEnabled) ||
-				('webkitRequestFullScreen' in doc);
+		return document.fullScreenEnabled ||
+				document.mozFullScreenEnabled ||
+				document.webkitFullscreenEnabled ||
+				document.msFullscreenEnabled;
 	}
 
 	function requestFullScreen(elem){
@@ -26,6 +26,8 @@
 			elem.mozRequestFullScreen();
 		} else if (elem.webkitRequestFullScreen) {
 			elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+		} else if (elem.msRequestFullscreen) {
+			elem.msRequestFullscreen();
 		}
 	}
 
@@ -33,6 +35,7 @@
 		return document.fullscreen ||
 				document.mozFullScreen ||
 				document.webkitIsFullScreen ||
+				document.msFullscreenElement != null ||
 				false;
 	}
 
@@ -43,11 +46,13 @@
 			document.mozCancelFullScreen();
 		} else if (document.webkitCancelFullScreen) {
 			document.webkitCancelFullScreen();
+		} else if (document.msCancelFullScreen) {
+			document.msCancelFullScreen();
 		}
 	}
 
 	function onFullScreenEvent(callback){
-		$(document).on("fullscreenchange mozfullscreenchange webkitfullscreenchange", function(){
+		$(document).on("fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange", function(){
 			// The full screen status is automatically
 			// passed to our callback as an argument.
 			callback(fullScreenStatus());
@@ -113,16 +118,11 @@
 			}
 		});
 
-		elem.cancel = function(){
-			cancelFullScreen();
-			return elem;
-		};
-
 		onFullScreenEvent(function(fullScreen){
 			if(!fullScreen){
 				// We have exited full screen.
-			        // Detach event listener
-			        $(document).off( 'fullscreenchange mozfullscreenchange webkitfullscreenchange' );
+				// Detach event listener
+				$(document).off( 'fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange' );
 				// Remove the class and destroy
 				// the temporary div
 
@@ -132,16 +132,16 @@
 
 			// Calling the facultative user supplied callback
 			if(options.callback) {
-                            options.callback(fullScreen);
-                        }
+				options.callback(fullScreen);
+			}
 		});
 
 		return elem;
 	};
 
 	$.fn.cancelFullScreen = function( ) {
-			cancelFullScreen();
+		cancelFullScreen();
 
-			return this;
+		return this;
 	};
 }(jQuery));
