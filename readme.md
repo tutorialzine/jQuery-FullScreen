@@ -62,7 +62,7 @@ You can then apply additional styles to your element. Take the opportunity to in
 
 ```css
 
-#content.fullScreen{
+# content.fullScreen{
 	/* Give the element a width and margin:0 auto; to center it. */
 }
 
